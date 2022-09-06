@@ -1,11 +1,12 @@
-import './App.css'
+import "./App.css";
 
-import React, { Component } from 'react'
-import Navbar from './Components/Navbar'
-import News from './Components/News'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import React, { Component } from "react";
+import Navbar from "./Components/Navbar";
+import News from "./Components/News";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default class App extends Component {
+  pageSize = 15;
   render() {
     return (
       // Used key to remount the component did mount in the component
@@ -18,7 +19,7 @@ export default class App extends Component {
               path="/"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="general"
                   country="in"
                   category="general"
@@ -30,7 +31,7 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="business"
                   country="in"
                   category="business"
@@ -42,7 +43,7 @@ export default class App extends Component {
               path="/entertainment"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="entertainment"
                   country="in"
                   category="entertainment"
@@ -54,7 +55,7 @@ export default class App extends Component {
               path="/general"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="general"
                   country="in"
                   category="general"
@@ -66,7 +67,7 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="health"
                   country="in"
                   category="health"
@@ -78,7 +79,7 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="science"
                   country="in"
                   category="science"
@@ -90,7 +91,7 @@ export default class App extends Component {
               path="/sports"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   key="sports"
                   country="in"
                   category="sports"
@@ -103,7 +104,7 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   key="technology"
                   category="technology"
@@ -113,6 +114,6 @@ export default class App extends Component {
           </Routes>
         </Router>
       </>
-    )
+    );
   }
 }
