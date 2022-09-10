@@ -37,7 +37,7 @@ export class News extends Component {
     "https://image.cnbcfm.com/api/v1/image/107112704-Bowlus_Volterra_Electric_RV.jpg?v=1662048652&w=1920&h=1080";
 
   async updateNews() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&category=${this.props.category}&apiKey=1d06f9e829744b7ba93a3c686a66554d
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&category=${this.props.category}&apiKey=${this.props.apiKey}
     &page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({
       loading: true,

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default class App extends Component {
   pageSize = 15;
+  apiKey = process.env.REACT_APP_NEWS_API;
   render() {
     return (
       // Used key to remount the component did mount in the component
@@ -22,6 +23,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="general"
                   country="in"
+                  apiKey={this.apiKey}
                   category="general"
                 />
               }
@@ -34,6 +36,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="business"
                   country="in"
+                  apiKey={this.apiKey}
                   category="business"
                 />
               }
@@ -46,6 +49,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="entertainment"
                   country="in"
+                  apiKey={this.apiKey}
                   category="entertainment"
                 />
               }
@@ -58,6 +62,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="general"
                   country="in"
+                  apiKey={this.apiKey}
                   category="general"
                 />
               }
@@ -70,6 +75,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="health"
                   country="in"
+                  apiKey={this.apiKey}
                   category="health"
                 />
               }
@@ -82,6 +88,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="science"
                   country="in"
+                  apiKey={this.apiKey}
                   category="science"
                 />
               }
@@ -94,6 +101,7 @@ export default class App extends Component {
                   pageSize={this.pageSize}
                   key="sports"
                   country="in"
+                  apiKey={this.apiKey}
                   category="sports"
                 />
               }
@@ -106,6 +114,7 @@ export default class App extends Component {
                 <News
                   pageSize={this.pageSize}
                   country="in"
+                  apiKey={this.apiKey}
                   key="technology"
                   category="technology"
                 />
