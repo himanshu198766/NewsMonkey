@@ -5,19 +5,27 @@ import PropTypes from 'prop-types'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 export class News extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       articles: [],
       loading: false,
       page: 1,
       totalResults: 0,
     }
+    document.title = `${this.capitalizeFirstLetter(
+      this.props.category,
+    )} - NewsMonkey`
   }
+
   static defaultProps = {
     country: 'in',
     pageSize: '18',
     category: 'science',
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
   static propTypes = {
@@ -61,10 +69,6 @@ export class News extends Component {
   //   this.updateNews()
   // }
 
-  async componentDidMount() {
-    this.updateNews()
-  }
-
   fetchMoreData = async () => {
     this.props.setProgress(10)
     let url = `https://newsapi.org/v2/top-headlines?country=${
@@ -86,40 +90,42 @@ export class News extends Component {
     this.props.setProgress(100)
   }
 
+  async componentDidMount() {
+    this.updateNews()
+  }
   render() {
     return (
       <>
-        <div className="container my-3">
-          <h1 className="text-center">NewsMonkey - Top Headlines</h1>
-          <InfiniteScroll
-            dataLength={this.state.articles.length}
-            next={this.fetchMoreData}
-            hasMore={this.state.articles.length !== this.state.totalResults}
-            loader={<Spinner />}
-          >
-            <div className="container">
-              <div className="row mt-3">
-                {this.state.articles.map((element) => {
-                  return (
-                    <div className="col-md-4" key={element.url}>
-                      <NewsItem
-                        title={element.title}
-                        description={element.description}
-                        imageUrl={
-                          element.urlToImage === null
-                            ? this.defaultImage
-                            : element.urlToImage
-                        }
-                        newsUrl={element.url}
-                        source={element.source.name}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
+        <h1 className="text-center mt-3">NewsMonkey - Top Headlines</h1>
+
+        <InfiniteScroll
+          dataLength={this.state.articles.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.articles.length !== this.state.totalResults}
+          loader={<Spinner />}
+        >
+          <div className="container">
+            <div className="row mt-3">
+              {this.state.articles.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title}
+                      description={element.description}
+                      imageUrl={
+                        element.urlToImage === null
+                          ? this.defaultImage
+                          : element.urlToImage
+                      }
+                      newsUrl={element.url}
+                      source={element.source.name}
+                    />
+                  </div>
+                )
+              })}
             </div>
-          </InfiniteScroll>
-        </div>
+          </div>
+        </InfiniteScroll>
 
         {/* <div className="container d-flex justify-content-between mb-3">
           <button
